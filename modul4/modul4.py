@@ -115,3 +115,80 @@ print(id(list1))
 print(id(list2))
 
 
+
+myList = [1, 2, 4, 4, 1, 4, 2, 6, 2, 9]
+
+s = []
+for i in myList[:]:
+    if i not in s:
+        s.append(i)
+    else:
+        myList.remove(i)
+
+print("The list with unique elements only:")
+print(myList)
+
+list_to_iter = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+iter_obj = list_to_iter.__iter__()
+print(next(iter_obj))
+print(list_to_iter)
+list_to_iter.pop(0)
+print(list_to_iter)
+print(next(iter_obj))
+
+# dictionary
+dict1 = {'key1': 1, 'key2': 2}
+# ''.__hash__()
+
+for obj in dict1:
+    print(type(obj))
+    print(obj)
+
+# keys
+print(type(dict1.keys()))
+for obj in dict1.keys():
+    print(type(obj))
+    print(obj)
+
+for obj in dict1.values():
+    print(type(obj))
+    print(obj)
+
+for key, value in dict1.items():
+    print(key)
+    print(value)
+
+# exerciciu magazin
+
+magazin1 = {'lego': 50, 'HotWheels': 60, 'Barbie': 30, "jucarie1": 30}
+magazin2 = {'lego': 60, 'HotWheels': 55, 'Barbie': 25, "jucarie2": 31}
+magazin3 = {'lego': 55, 'HotWheels': 70, 'Barbie': 14, "jucarie3": 32}
+lista_de_cumparaturi = {'lego': 1, 'HotWheels': 2, 'Barbie': 3}
+DEFAULT_SHOPS = {}
+from utils.best_buy import DEFAULT_SHOPS as shops
+from utils.best_buy import best_buy
+
+# from utils.best_buy import *
+# import utils.best_buy
+
+print(best_buy(*shops, to_buy=lista_de_cumparaturi))
+
+# sets
+
+set1 = {1, 2, 4, 4}
+set2 = {1, 2, 3}
+print(type(set1))
+print(set1)
+result = set1.intersection(set2)
+print(result)
+print(set1.difference(set2))
+print(set2.difference(set1))
+print(set1.symmetric_difference(set2))
+print(set2.symmetric_difference(set1))
+
+# pinball test
+from utils.pinnball_test import pinball_test, DEFAULT_TEST_DATA as test_data
+print(pinball_test(test_data))
+
+
+
