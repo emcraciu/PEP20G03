@@ -1,0 +1,1 @@
+from communicator.xcom import MySecret
