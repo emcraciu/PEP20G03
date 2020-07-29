@@ -160,3 +160,25 @@ for i in my_iterable_object:
 for i in my_iterable_object:
     print(i)
 
+
+class Prime():
+    def __init__(self, lim_inf, lim_sup):
+        self.lim_inf = lim_inf
+        self.lim_sup = lim_sup
+        self.partial_res = None
+        self.var = list(range(self.lim_inf, self.lim_sup))
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        self.partial_res = self.var.pop(0)
+        for j in range(2, self.partial_res // 2):
+            if self.partial_res % j == 0:
+                self.__next__()
+        else:
+            return self.partial_res
+
+
+var4 = Prime(128, 256)
+print(next(var4))
