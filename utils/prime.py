@@ -1,5 +1,3 @@
-import random
-
 def prime(limit_inf, limit_sup):
     prime_list = []
     for i in range(limit_inf, limit_sup):
@@ -8,5 +6,4 @@ def prime(limit_inf, limit_sup):
                 break
         else:
             prime_list.append(i)
-    rand = random.randint(len(prime_list) - 1)
-    return prime_list[rand]
+    return prime_list

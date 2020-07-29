@@ -182,3 +182,127 @@ class Prime():
 
 var4 = Prime(128, 256)
 print(next(var4))
+
+# file operations
+
+stream1 = open(r'/Users/emanuel.craciun/PycharmProjects/PEP20G03/modul6/text.txt', mode='rb')
+print(type(stream1))
+new_read1 = stream1.read()
+print(type(new_read1))
+print(new_read1)
+stream1.close()
+
+stream2 = open('text.txt', mode='rt')
+print(type(stream2))
+new_read2 = stream2.read()
+print(type(new_read2))
+print(new_read2)
+stream2.close()
+
+stream3 = open('text.txt', mode='wt')
+stream3.write('New text')
+stream3.close()
+
+with open('text.txt', mode='r') as stream4:
+    print(stream4.read())
+
+
+# stream4.__enter__()
+# stream4.__exit__()
+
+
+class Context():
+    def __init__(self):
+        print('in constructor')
+        # time.sleep(1)
+        self.sleep = 1
+
+    def __enter__(self):
+        print('before create')
+        # time.sleep(1)
+        self.sleep = 1
+        return self
+
+    def do_some_work(self):
+        print('working')
+        # time.sleep(self.sleep)
+
+    def __exit__(self, type, value, traceback):
+        print(traceback)
+        print('after end')
+        # time.sleep(1)
+
+
+con = Context()
+with con as context:
+    context.do_some_work()
+    # raise Exception('some error')
+
+# byte
+
+var1 = b'My text'
+print(type(var1))
+var2 = var1.decode()
+print(type(var2))
+var3 = var2.encode()
+print(type(var3))
+
+# Map Function
+a = [1, 2, 3]
+map_obj = map(lambda x: x + 1, a)
+print(type(map_obj))
+for i in map_obj:
+    print(i)
+
+print("==============Map Function===============")
+a = [1, 2, 3]
+b = [3, 3, 3]
+map_obj = map(lambda x, y: x + y + 1, a, b)
+print(type(map_obj))
+for i in map_obj:
+    print(i)
+
+# examples
+animale = ['rabbit', 'tiger', 'human']
+mapped_animal = map(lambda s: s if 'g' in s else None, animale)
+for i in mapped_animal:
+    print(i)
+print('++++filter++++')
+
+filtered_animals = filter(lambda s: s if 'g' in s else None, animale)
+for animal in filtered_animals:
+    print(animal)
+
+
+print(all([0, 1, 2, 3]))
+
+
+def my_all(my_iter):
+    def my_filter_function(elem):
+        return bool(elem)
+
+    for element in my_iter:
+        if my_filter_function(element):
+            continue
+        return False
+    else:
+        return True
+
+
+print(my_all([0, 1, 2, 3]))
+
+print(any([0, 0, 0, 0]))
+
+
+def my_any(my_iter2):
+    def my_filter_function(v):
+        return bool(v)
+
+    for j in my_iter2:
+        if my_filter_function(j):
+            return True
+    else:
+        return False
+
+
+print(my_any([0, 0, 0, 0]))
