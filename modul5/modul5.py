@@ -133,3 +133,80 @@ def func1():
 
 func1()
 print('after function: ', global_var)
+
+
+class A():
+    def method_a(self):
+        print('a')
+
+
+class B(A):
+    def method_a(self):
+        print('b')
+
+    def method_b(self):
+        print('b_1')
+
+
+class C(B, A):
+    pass
+    # def method_a(self):
+    #     print('c')
+
+
+c = C()
+c.method_a()
+c.method_b()
+
+from communicator import Client
+
+client = Client()
+print(client.prime, client.base)
+from communicator import Server
+
+server = Server()
+print(server.prime, server.base)
+
+a = 0
+
+
+class OtherMathError(ArithmeticError):
+    ex_info = 'math data'
+
+    def __init__(self, *args, **kwargs):
+        print(args)
+
+
+try:
+    if a:
+        raise OtherMathError('This is my math error')
+    else:
+        0 / 0
+except OtherMathError as error:
+    print(error.ex_info)
+    print('This is something else')
+except ZeroDivisionError as e:
+    print('Not a good number')
+except ArithmeticError:
+    print('other math error')
+except:
+    print(0)
+
+
+# lambda functions
+def var1(a, b):
+    return a + b
+
+
+var1 = lambda a, b: a + b
+
+
+print(var1(1, 2))
+print(type(var1))
+
+
+def math_calc(func1, number):
+    return (3 * func1(number) + 1) ** (1 / 2)
+
+
+print(math_calc(lambda x: x * 3, 2))
